@@ -1,0 +1,32 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2015", "dom"],
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "baseUrl": ".",
+        "paths": {
+            "@styles": [
+                "src/styles/*"
+            ],
+            "@images/*": [
+                "src/images/*"
+            ]
+        },
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

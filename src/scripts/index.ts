@@ -1,6 +1,20 @@
+if ((process.env as any).NODE_ENV !== 'production') {
+	require('../index.html')
+}
+
 //es6的class语法糖，简化了js原有面对对象的写法
 class Lottery {
-	constructor () {
+	count: any;
+	speed: any;
+	timer: any;
+	currentIndex: any;
+	rotateNum: any;
+	basicCycle: any;
+	prizePlace: any;
+	isClick: any;
+	parentDom: Element;
+	initOppo: any;
+	constructor() {
 		this.count = 0; //位置总数
 		this.speed = 10; //初始速度
 		this.timer = 0; //定时器时间
@@ -12,44 +26,47 @@ class Lottery {
 		this.parentDom = null; //根dom
 		this.initOppo = 2; //初始抽奖次数
 	}
+
 	//初始化方法，点击抽奖事件
-	init () {
+	init() {
 		const _this = this;
 		const initOppo = document.getElementById('resOpportunity');
-		initOppo.innerHTML = '还有' + this.initOppo + '次机会'
-		if ($('#lotteryBox').find('li').length > 0) {
-			const $lottery = $('#lotteryBox');
-			const $units = $lottery.find('li');
+		initOppo.innerHTML = '还有' + this.initOppo + '次机会';
+		const $lottery = document.querySelector('#lotteryBox');
+		if ($lottery.querySelectorAll('li').length > 0) {
+			const $units = $lottery.querySelectorAll('li');
 			this.count = $units.length;
 			this.parentDom = $lottery;
 		}
-		$('#lotteryBox .lotteryBtn').on('click',function () {
-			if (_this.isClick) { //防止在转动过程中,重复点击抽奖按钮
-				alert('你已用完抽奖次数')
-				return false
-			} else {
-				_this.speed = 100;
-				_this.rotateNum = 0;
-				_this.initOppo -= 1;
-				initOppo.innerHTML = '还有' + _this.initOppo + '次机会'
-				_this.turning();
-				_this.isClick = true; //一次完成后，可继续抽
-				return false;
-			}
-		})
+		document.querySelector('#lotteryBox .lotteryBtn').addEventListener(
+			'click',
+			function () {
+				if (_this.isClick) { //防止在转动过程中,重复点击抽奖按钮
+					alert('你已用完抽奖次数')
+					return false
+				} else {
+					_this.speed = 100;
+					_this.rotateNum = 0;
+					_this.initOppo -= 1;
+					initOppo.innerHTML = '还有' + _this.initOppo + '次机会'
+					_this.turning();
+					_this.isClick = true; //一次完成后，可继续抽
+					return false;
+				}
+			})
 	}
 	//为即将转到下一个节点添加class:active
-	addNextItemClass () {
-		this.parentDom.find('.lottery-unit-' + this.currentIndex).removeClass("active");
+	addNextItemClass() {
+		this.currentIndex >= 0 && this.parentDom.querySelector('.lottery-unit-' + this.currentIndex).classList.remove("active");
 		this.currentIndex += 1;
-		if (this.currentIndex >= this.count-1) {
+		if (this.currentIndex >= this.count - 1) {
 			this.currentIndex = 0;
 		}
-		this.parentDom.find('.lottery-unit-' + this.currentIndex).addClass('active');
+		this.parentDom.querySelector('.lottery-unit-' + this.currentIndex).classList.add('active');
 		return false
 	}
 	//浮层转动的逻辑都在该方法内实现
-	turning () {
+	turning() {
 		this.rotateNum += 1
 		this.addNextItemClass();
 		//判断是否转动完毕
@@ -58,7 +75,7 @@ class Lottery {
 			this.prizePlace = -1;
 			this.timer = 0;
 			this.initOppo != 0 ? this.isClick = false : this.isClick = true;
-			let selectedEle = $(this.parentDom.find('.lottery-unit-' + this.currentIndex).selector)[0].dataset.value;
+			let selectedEle = this.parentDom.querySelectorAll('.lottery-unit-' + this.currentIndex)[0].getAttribute('data-value');
 			console.log("恭喜你中了" + selectedEle + "等奖");
 		} else {
 			//该判断内是对转动速度speed的处理
@@ -78,16 +95,16 @@ class Lottery {
 				}
 			}
 			// 此处做匀速阶段的处理
-			if (this.speed<40) {
-	            this.speed=40;
-	        };
-	        // 定时器做整个转动处理
-			this.timer = setTimeout(this.turning.bind(this),this.speed)//此处使用bind(),防止setTimeout改变this的指向
+			if (this.speed < 40) {
+				this.speed = 40;
+			};
+			// 定时器做整个转动处理
+			this.timer = setTimeout(this.turning.bind(this), this.speed) //此处使用bind(),防止setTimeout改变this的指向
 		}
 		return false;
-	} 
+	}
 }
 // 页面初始化，执行初始化方法
 window.onload = () => {
-    new Lottery().init();
+	new Lottery().init();
 }
