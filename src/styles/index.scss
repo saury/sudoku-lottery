@@ -1,22 +1,33 @@
+$ratio750: 1 / 750 * 100vw;
 * {
     margin: 0;
     padding: 0;
 }
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: 'microsoft yahei', '\534E\6587\7EC6\9ED1', Verdana, Arial, Helvetica, sans-serif;
-    font-size: .4rem;
 }
 
 ul li {
     list-style: none;
 }
 
-.left {
+a {
+    text-decoration: none;
+}
+
+.pull-left {
     float: left;
 }
 
-.right {
+.pull-right {
     float: right;
 }
 
@@ -55,84 +66,271 @@ a:hover {
     text-decoration: none;
 }
 
-.rollPrizeInfo {
-    background: url(../images/lottery_page_02.jpg) no-repeat;
-    background-size: 100% 100%;
-    height: 1.1rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+// .rollPrizeInfo {
+//     background: url(../images/lottery_page_02.jpg) no-repeat;
+//     background-size: 100% 100%;
+//     height: 1.1rem;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+// .rollBox {
+//     width: 90%;
+//     height: .6rem;
+//     background: #fff;
+//     border-radius: 20px;
+//     overflow: hidden;
+//     text-align: center;
+//     line-height: .6rem;
+//     font-size: .27rem;
+// }
+
+/* wrapper */
+
+.lottery-wraper {
+    background-color: #ff5d5c;
+    background-image: linear-gradient(90deg, rgba(200, 0, 0, .2) 30%, transparent 0), linear-gradient( rgba(200, 0, 0, .2) 30%, transparent 0);
+    background-size: 10px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-.rollBox {
-    width: 90%;
-    height: .6rem;
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    text-align: center;
-    line-height: .6rem;
-    font-size: .27rem;
+
+/* banner */
+
+.lottery-banner {
+    width: 675 * $ratio750;
+    height: 270 * $ratio750;
+    margin: 18 * $ratio750 auto 0;
+    background: url('../images/3/choujiang.png') center/contain no-repeat;
+    transform: translateY(-120%);
+    animation: bannerDown .2s cubic-bezier(0.25, 0.1, 0.25, 1.3) forwards;
+}
+
+@keyframes bannerDown {
+    from {
+        transform: translateY(-120%);
+    }
+    to {
+        transform: translateY(0%);
+    }
 }
 
 .lotteryBox {
-    background: url(../images/lottery_page_03.jpg) no-repeat;
-    background-size: 100% 100%;
-    height: 5.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: url('../images/3/choujiangbiankuang.png') center/contain no-repeat;
+    width: 714 * $ratio750;
+    height: 689 * $ratio750;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 58 * $ratio750;
+    padding-left: 102 * $ratio750;
+    padding-right: 102 * $ratio750;
+    padding-bottom: 132 * $ratio750;
 }
 
 .lotteryBox ul {
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    padding: .2rem;
+    justify-content: space-around; // padding: .2rem;
+    position: relative;
+    .mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(#000, .4);
+        opacity: 0;
+        &.in {
+            opacity: 1;
+        }
+    }
+    .active,
+    .upper {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.lotteryBtn {
+    background: url('../images/3/anniu.png') center/contain no-repeat;
+    &.active {
+        background-image: url('../images/3/anniu-anxia.png')
+    }
 }
 
 .lotteryBox ul li {
     position: relative;
-    width: 30.8%;
-    margin-bottom: 0.08rem;
-    margin-right: .1rem;
+    width: 154 * $ratio750;
+    height: 154 * $ratio750;
 }
 
-.resOpportunity {
-    width: 100%;
-    bottom: 11%;
-    left: 50%;
-    -moz-transform: translate(-36%, 0);
-    -webkit-transform: translate(-36%, 0);
-    -o-transform: translate(-36%, 0);
-    -ms-transform: translate(-36%, 0);
-    transform: translate(-36%, 0);
-    font-size: .22rem;
+.lottery-countdown {
+    text-align: center;
+    color: #004cff;
+    text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+    .h3 {
+        font-size: 32 * $ratio750;
+        line-height: 2.5;
+    }
+    font-size: 24 * $ratio750;
 }
 
-.lotteryBox ul li img {
-    width: 100%;
-    z-index: 2;
+.lottery-btn-group {
+    display: flex;
+    padding: 40 * $ratio750 0;
+    justify-content: space-around;
+    .btn-left,
+    .btn-right {
+        width: 244 * $ratio750;
+        height: 104 * $ratio750;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .btn-left {
+        background-image: url('../images/3/anniu_zhongjiang.png');
+    }
+    .btn-right {
+        background-image: url('../images/3/anniu_fenxiang.png');
+    }
 }
 
-.lotteryBox ul li:nth-child(3n) {
-    margin-right: 0;
+.lottery-hint {
+    padding-bottom: 60 * $ratio750;
+    color: #fff;
+    .title {
+        position: relative;
+        font-size: 36 * $ratio750;
+        text-align: center;
+        margin-bottom: 16 * $ratio750;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            width: 28vw;
+            height: 1px;
+            background: #fff;
+            top: 50%;
+        }
+        &:before {
+            left: 2vw;
+        }
+        &:after {
+            right: 2vw;
+        }
+        s {
+            position: absolute;
+            top: 50%;
+            width: 11 * $ratio750;
+            height: 11 * $ratio750;
+            margin-top: -5 * $ratio750;
+            background: #ffffff;
+            border-radius: 50%;
+            &.dot-left {
+                left: 32vw;
+            }
+            &.dot-right {
+                right: 32vw;
+            }
+        }
+    }
+    ul {
+        font-size: 26 * $ratio750;
+        padding: 0 40 * $ratio750;
+        letter-spacing: 1px;
+        li {
+            position: relative;
+            padding-left: 20 * $ratio750;
+            margin-bottom: 8 * $ratio750;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 11 * $ratio750;
+                height: 11 * $ratio750;
+                border-radius: 50%;
+                top: .5em;
+                background: #ffffff;
+            }
+        }
+    }
 }
 
-.lotteryBox ul li.active .shade {
-    display: block;
-}
-
-.shade {
-    width: 100%;
-    height: 95.5%;
+.lottery-result {
     position: absolute;
-    left: 0;
     top: 0;
-    background: url(../images/11.png) no-repeat;
-    background-size: cover;
-    z-index: 999;
-    display: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 2;
+    background: rgba(#000, .87);
+    font-size: 40 * $ratio750;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    &.in {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .close {
+        position: absolute;
+        top: 178 * $ratio750;
+        right: 125 * $ratio750;
+        width: 60 * $ratio750;
+        height: 60 * $ratio750;
+        background: url('../images/4567/guanbi.png') center/contain no-repeat;
+    }
+    .lottery-result-inner {
+        min-height: 100vmax;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    p {
+        +.gift {
+            margin-top: -60 * $ratio750;
+        }
+    }
+    .gift {
+        width: 400 * $ratio750;
+        height: 400 * $ratio750;
+    }
+    .h4 {
+        margin: 40 * $ratio750 0 20 * $ratio750;
+        color: #ffed13;
+    }
+    a {
+        color: #fff;
+    }
+    .result-btn-group {
+        display: flex;
+        margin-top: 100 * $ratio750;
+        .btn-left,
+        .btn-right {
+            font-size: 30 * $ratio750;
+            min-width: 240 * $ratio750;
+            line-height: 88 * $ratio750;
+            padding: 0 40 * $ratio750;
+            box-sizing: border-box;
+            background: #e85452;
+            border-radius: 10 * $ratio750;
+            text-align: center;
+            margin: 0 10* $ratio750;
+        }
+    }
 }

@@ -22,13 +22,13 @@ module.exports = webpackMerge(commonConfig, {
     plugins: [
         new ExtractTextPlugin('css/[name].css'), // singleton stylesheet
 
-        new webpack.optimize.UglifyJsPlugin({
-            mangle: {
-                eval: true,
-                toplevel: true,
-            },
-            comments: false
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     mangle: {
+        //         eval: true,
+        //         toplevel: true,
+        //     },
+        //     comments: false
+        // }),
         new webpack.DefinePlugin({
             'process.env': {
                 'ENV': JSON.stringify(ENV)

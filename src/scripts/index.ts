@@ -13,6 +13,8 @@ class Lottery {
 	prizePlace: any;
 	isClick: any;
 	parentDom: Element;
+	mask: Element;
+	result: Element;
 	initOppo: any;
 	constructor() {
 		this.count = 0; //位置总数
@@ -24,6 +26,8 @@ class Lottery {
 		this.prizePlace = -1; //中奖位置
 		this.isClick = false; //是否重复点击抽奖
 		this.parentDom = null; //根dom
+		this.mask = null; // 抽奖遮罩
+		this.result = null; //抽奖结果
 		this.initOppo = 2; //初始抽奖次数
 	}
 
@@ -31,29 +35,57 @@ class Lottery {
 	init() {
 		const _this = this;
 		const initOppo = document.getElementById('resOpportunity');
-		initOppo.innerHTML = '还有' + this.initOppo + '次机会';
-		const $lottery = document.querySelector('#lotteryBox');
-		if ($lottery.querySelectorAll('li').length > 0) {
-			const $units = $lottery.querySelectorAll('li');
+		const lotteryBox = document.querySelector('#lotteryBox');
+		const startBtn = lotteryBox.querySelector('.lotteryBtn');
+		_this.mask = lotteryBox.querySelector('.mask');
+		_this.result = document.querySelector('.lottery-result');
+
+		initOppo.innerHTML = this.initOppo;
+		if (lotteryBox.querySelectorAll('li').length > 0) {
+			const $units = lotteryBox.querySelectorAll('li');
 			this.count = $units.length;
-			this.parentDom = $lottery;
+			this.parentDom = lotteryBox;
 		}
-		document.querySelector('#lotteryBox .lotteryBtn').addEventListener(
-			'click',
-			function () {
-				if (_this.isClick) { //防止在转动过程中,重复点击抽奖按钮
-					alert('你已用完抽奖次数')
-					return false
-				} else {
-					_this.speed = 100;
-					_this.rotateNum = 0;
-					_this.initOppo -= 1;
-					initOppo.innerHTML = '还有' + _this.initOppo + '次机会'
-					_this.turning();
-					_this.isClick = true; //一次完成后，可继续抽
-					return false;
+
+		// close result page event
+		[].forEach.call(
+			document.querySelectorAll('[data-close]'),
+			function (closeTrigger: any) {
+				closeTrigger.addEventListener('touchend', function () {
+					_this.result.classList.remove('in');
+					_this.mask.classList.remove('in');
+				})
+			}
+		)
+
+		startBtn.addEventListener('touchstart', function () {
+			startBtn.classList.add('active');
+		});
+
+		startBtn.addEventListener('touchend', function () {
+			startBtn.classList.remove('active');
+			//防止在转动过程中,重复点击抽奖按钮
+			if (_this.initOppo <= 0) {
+				if (!_this.isClick) {
+					_this.result.classList.add('in');
 				}
-			})
+				return false;
+			}
+			else if (_this.isClick) {
+				return false
+			}
+
+			else {
+				_this.mask.classList.add('in');
+				_this.speed = 100;
+				_this.rotateNum = 0;
+				_this.initOppo -= 1;
+				initOppo.innerHTML = _this.initOppo
+				_this.turning();
+				_this.isClick = true; //一次完成后，可继续抽
+				return false;
+			}
+		});
 	}
 	//为即将转到下一个节点添加class:active
 	addNextItemClass() {
@@ -74,11 +106,16 @@ class Lottery {
 			clearTimeout(this.timer)
 			this.prizePlace = -1;
 			this.timer = 0;
-			this.initOppo != 0 ? this.isClick = false : this.isClick = true;
+			// this.initOppo != 0 ? this.isClick = false : this.isClick = true;
+			this.isClick = false
 			let selectedEle = this.parentDom.querySelectorAll('.lottery-unit-' + this.currentIndex)[0].getAttribute('data-value');
 			console.log("恭喜你中了" + selectedEle + "等奖");
-		} else {
-			//该判断内是对转动速度speed的处理
+			// todo: show result and do callback issue
+			this.result.classList.add('in');
+
+		}
+		//该判断内是对转动速度speed的处理
+		else {
 			if (this.rotateNum < this.basicCycle) {
 				this.speed -= 10
 			} else if (this.rotateNum == this.basicCycle) {

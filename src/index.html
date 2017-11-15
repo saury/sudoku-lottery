@@ -11,54 +11,81 @@
 </head>
 
 <body>
-    <div class="lotteryWraper">
-        <img src="images/lottery_page_01.jpg" alt="" />
-        <!--<p id="resOpportunity"></p>-->
+    <div class="lottery-result">
+        <div class="lottery-result-inner">
+            <span class="close" data-close></span>
+            <p>恭喜你获得了</p>
+            <div class="gift">
+                <!-- <img src="images/4567/liwu.png" /> -->
+                <img src="images/4567/liwu2.png" />
+            </div>
+            <div class="h4">三等奖</div>
+            <p>iPhone1台</p>
+            <div class="result-btn-group">
+                <a href="javascript:void(0)" class="btn-left" data-close>继续抽奖</a>
+                <a href="javascript:void(0)" class="btn-right">查看奖品详情</a>
+            </div>
+        </div>
+    </div>
+    <div class="lottery-wraper">
+
+        <!-- banner -->
+        <div class="lottery-banner"></div>
+
+        <!-- lottery box -->
         <div class="lotteryBox" id="lotteryBox">
             <ul>
-                <li class="lottery-unit-0" data-value="0">
-                    <img src="images/01.png" alt="" />
-                    <div class="shade"></div>
+                <li class="lottery-unit-0" data-value="4">
+                    <img src="images/3/sidengjiang.png" />
                 </li>
                 <li class="lottery-unit-1" data-value="1">
-                    <img src="images/02.png" alt="" />
-                    <div class="shade"></div>
+                    <img src="images/3/yidengjiang.png" />
                 </li>
                 <li class="lottery-unit-2" data-value="2">
-                    <img src="images/03.png" alt="" />
-                    <div class="shade"></div>
+                    <img src="images/3/erdengjiang.png" />
                 </li>
-                <li class="lottery-unit-7" data-value="7">
-                    <img src="images/04.png" alt="" />
-                    <div class="shade"></div>
+                <li class="lottery-unit-7" data-value="0">
+                    <img src="images/3/xiexiedanyu.png" />
                 </li>
-                <li class="lotteryBtn pr">
-                    <img src="images/05.png" alt="" />
-                    <sapn id="resOpportunity" class="resOpportunity pa"></sapn>
-                </li>
+                <li class="lotteryBtn upper"></li>
                 <li class="lottery-unit-3" data-value="3">
-                    <img src="images/06.png" alt="" />
-                    <div class="shade"></div>
+                    <img src="images/3/sandengjiang.png" />
                 </li>
-                <li class="lottery-unit-6" data-value="6">
-                    <img src="images/07.png" alt="" />
-                    <div class="shade"></div>
+                <li class="lottery-unit-6" data-value="3">
+                    <img src="images/3/sandengjiang.png" />
                 </li>
-                <li class="lottery-unit-5" data-value="5">
-                    <img src="images/08.png" alt="" />
-                    <div class="shade"></div>
+                <li class="lottery-unit-5" data-value="0">
+                    <img src="images/3/xiexiedanyu.png" />
                 </li>
-                <li class="lottery-unit-4" data-value="4">
-                    <img src="images/09.png" alt="" />
-                    <div class="shade"></div>
+                <li class="lottery-unit-4" data-value="3">
+                    <img src="images/3/sandengjiang.png" />
                 </li>
+                <div class="mask"></div>
             </ul>
         </div>
-        <div class="lotteryRule">
-            <img src="images/lottery_page_04.jpg" alt="" />
+        <div class="lottery-countdown">
+            <div class="h3">
+                剩余抽奖次数：
+                <sapn id="resOpportunity" class="resOpportunity"></sapn>
+                次
+            </div>
+            小贴士：分享并邀请好友参与可获得更多抽奖机会哟
         </div>
-        <div class="clickBtn">
-            <img src="images/lottery_page_05.jpg" alt="" />
+        <div class="lottery-btn-group">
+            <a href="javascript:void(0)" class="btn-left"></a>
+            <a href="javascript:void(0)" class="btn-right"></a>
+        </div>
+        <div class="lottery-hint">
+            <div class="title">
+                <s class="dot-left"></s>
+                活动规则
+                <s class="dot-right"></s>
+            </div>
+            <ul>
+                <li>活动详情活动详情活动详情活动详情活动详情活动</li>
+                <li>活动详情活动详情活动详情活动详情活动详情活动</li>
+                <li>活动详情活动详情活动详情活动详情活动详情活动活动详情活动详情活动详情活动详情活动详情活动</li>
+            </ul>
         </div>
     </div>
 

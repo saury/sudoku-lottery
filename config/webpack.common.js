@@ -25,7 +25,7 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 8192,
+                        // limit: 8192,
                         // fallback options
                         name: '[name].[ext]',
                         outputPath: 'images/'
