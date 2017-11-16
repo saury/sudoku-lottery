@@ -1,0 +1,74 @@
+@import 'shared';
+.detail-wrap {
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.banner {
+    color: #fff;
+    background: #35a4de;
+    height: 240 * $ratio750;
+    font-size: 30 * $ratio750;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
+    margin-bottom: 10 * $ratio750;
+    .h4 {
+        font-size: 36 * $ratio750;
+    }
+    small {
+        font-size: 24 * $ratio750;
+        font-weight: 300;
+    }
+}
+
+.qr {
+    background: #fff;
+    height: 460 * $ratio750;
+    margin-bottom: 10 * $ratio750;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1.8;
+    color: #333;
+    text-align: center;
+    padding-top: 40 * $ratio750;
+    box-sizing: border-box;
+    font-size: 24 * $ratio750;
+    img {
+        width: 280 * $ratio750;
+        height: 280 * $ratio750;
+        margin: 0 auto 28 * $ratio750;
+    }
+    span {
+        font-size: 28 * $ratio750;
+    }
+    small {
+        color: #666;
+    }
+}
+
+.panel {
+    background: #ffffff;
+    padding: 0 20 * $ratio750;
+    font-size: 24 * $ratio750;
+    .panel-header {
+        font-size: 28 * $ratio750;
+        font-weight: 600;
+        line-height: 88 * $ratio750;
+        border-bottom: 1px solid #f8f8f8;
+    }
+    .panel-body {
+        padding: 24 * $ratio750 0;
+        line-height: 2.4;
+        color: #666;
+    }
+}
