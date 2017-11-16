@@ -1,22 +1,13 @@
-简单的实现了抽奖的过程（分享到朋友圈 和 用户生成订单并确认付款均会增加抽奖次数，由于需要后台支持，这里并没有给出那部分code）。
+# 九宫格抽奖 (folked version base on [sudoku-lottery](https://github.com/MysticalFE/sudoku-lottery))
 
-这里用的是es6 + jq的形式做的（如果对es6不熟，[猛烈点击](http://es6.ruanyifeng.com/)），在代码内做了相关的注解，这里只列出基本的变量：
-    
-`    this.count = 0; //位置总数
-    this.speed = 10; //初始速度
-	this.timer = 0; //定时器时间
-	this.currentIndex = -1; //转动的当前位置
-	this.rotateNum = 0; //转动次数
-	this.basicCycle = 50; //运动初始次数
-	this.prizePlace = -1; //中奖位置
-	this.isClick = false; //是否重复点击抽奖
-	this.parentDom = null; //根dom
-	this.initOppo = 2; //初始抽奖次数
-`
-	
+在原有项目基础上添加了webpack便于开发与打包，并根据手头项目进行了简单粗暴的改造，项目概况可参照MysticalFE的原始版本。
 
-如果感觉对你有帮助，请给个star			
+## How to use
+`npm install`
 
+## How to develop
+`npm start`
 
-
+## How to build
+`npm run build`
 
