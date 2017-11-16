@@ -1,0 +1,80 @@
+@import 'shared';
+.record-wrap {
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    ul {
+        +.no-record-info {
+            display: none;
+        }
+        color: #333;
+        a {
+            text-decoration: none;
+            color: #333
+        }
+    }
+    li {
+        height: 160 * $ratio750;
+        background: #ffffff;
+        margin-bottom: 10 * $ratio750;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 24 * $ratio750;
+        font-size: 28 * $ratio750;
+        position: relative;
+        background-position: 65vw center;
+        background-size: 120 * $ratio750 102 * $ratio750;
+        background-repeat: no-repeat;
+        &.checked {
+            background-image: url('../images/8/yihexiao.png')
+        }
+        &.unchecked {
+            background-image: url('../images/8/weihexiao.png')
+        }
+        &.expired {
+            background-image: url('../images/8/yiguoqi.png')
+        }
+        p {
+            margin: 0 0 8 * $ratio750;
+        }
+        small {
+            font-size: 24 * $ratio750;
+            color: #666;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 24 * $ratio750;
+            width: 16 * $ratio750;
+            height: 30 * $ratio750;
+            margin-top: -15 * $ratio750;
+            background: url('../images/8/jiantou.png') center/contain no-repeat;
+        }
+    }
+}
+
+.no-record-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    i {
+        display: block;
+        width: 189 * $ratio750;
+        height: 240 * $ratio750;
+        margin-bottom: 64 * $ratio750;
+        background: url('../images/10/kongtai.png') center/contain no-repeat;
+    }
+}

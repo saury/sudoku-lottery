@@ -13,6 +13,7 @@ module.exports = {
     entry: {
         'intro': ['./src/scripts/intro.ts', './src/styles/intro.scss'],
         'info': ['./src/scripts/info.ts', './src/styles/info.scss'],
+        'record': ['./src/scripts/record.ts', './src/styles/record.scss'],
         'detail': ['./src/scripts/detail.ts', './src/styles/detail.scss'],
         'index': ['./src/scripts/index.ts', './src/styles/index.scss']
     },
@@ -65,8 +66,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             // name: ['index', 'game', 'record']
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
-            chunks: ['index', 'intro', 'info', 'detail'], //提取哪些模块共有的部分
-            minChunks: 4 // 提取至少4个模块共有的部分
+            chunks: ['index', 'intro', 'info', 'detail', 'record'], //提取哪些模块共有的部分
+            minChunks: 5 // 提取至少4个模块共有的部分
         }),
 
         new HtmlWebpackPlugin({
@@ -90,6 +91,11 @@ module.exports = {
             filename: 'detail.html',
             template: 'src/detail.html',
             chunks: ['vendors', 'detail']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'record.html',
+            template: 'src/record.html',
+            chunks: ['vendors', 'record']
         }),
     ]
 };
