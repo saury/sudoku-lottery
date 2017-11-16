@@ -1,0 +1,173 @@
+@import 'shared';
+.intro-wrap {
+    background-color: #ff5d5c;
+    background-image: linear-gradient(90deg, rgba(200, 0, 0, .2) 30%, transparent 0), linear-gradient( rgba(200, 0, 0, .2) 30%, transparent 0);
+    background-size: 10px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.count-down {
+    width: 346 * $ratio750;
+    height: 183 * $ratio750;
+    margin: 6 * $ratio750 auto 0;
+    background: url('../images/1/shengyushijian.png') center/contain no-repeat;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 36 * $ratio750;
+    >div {
+        letter-spacing: -3px;
+    }
+    span {
+        color: #f00;
+    }
+}
+
+.lottery-banner {
+    width: 675 * $ratio750;
+    height: 270 * $ratio750;
+    margin: -50 * $ratio750 auto 0;
+    background: url('../images/1/choujiang.png') center/contain no-repeat;
+}
+
+.lotteryBox {
+    background: url('../images/1/jiangpingdikuang.png') center/contain no-repeat;
+    width: 714 * $ratio750;
+    height: 689 * $ratio750;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 58 * $ratio750;
+    padding-left: 102 * $ratio750;
+    padding-right: 102 * $ratio750;
+    padding-bottom: 132 * $ratio750;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 30 * $ratio750;
+    .title {
+        font-weight: 600;
+        font-size: 36 * $ratio750;
+        margin: 20 * $ratio750 0;
+    }
+    ul {
+        min-width: 84%;
+        line-height: 1.95;
+    }
+}
+
+.lottery-btn-group {
+    display: flex;
+    padding: 20 * $ratio750;
+    justify-content: space-around;
+    .btn-left,
+    .btn-right {
+        width: 244 * $ratio750;
+        height: 104 * $ratio750;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .btn-left {
+        background-image: url('../images/1/anniu_jiangpin.png');
+    }
+    .btn-right {
+        background-image: url('../images/1/anniu_guanzhu.png');
+    }
+}
+
+.lottery-board {
+    width: 714 * $ratio750;
+    height: 332 * $ratio750;
+    margin: 40 * $ratio750 auto;
+    box-sizing: border-box;
+    background: url('../images/1/yizhongjiangdikuang.png') center/contain no-repeat;
+    padding-top: 50 * $ratio750;
+    padding-left: 102 * $ratio750;
+    padding-right: 102 * $ratio750;
+    padding-bottom: 100 * $ratio750;
+    font-size: 24 * $ratio750;
+    .title {
+        text-align: center;
+        font-size: 30 * $ratio750;
+        margin-bottom: 20 * $ratio750;
+    }
+    .marquee {
+        padding: 0 20 * $ratio750;
+        li {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.lottery-hint {
+    padding-bottom: 60 * $ratio750;
+    color: #fff;
+    .title {
+        position: relative;
+        font-size: 36 * $ratio750;
+        text-align: center;
+        margin-bottom: 16 * $ratio750;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            width: 28vw;
+            height: 1px;
+            background: #fff;
+            top: 50%;
+        }
+        &:before {
+            left: 2vw;
+        }
+        &:after {
+            right: 2vw;
+        }
+        s {
+            position: absolute;
+            top: 50%;
+            width: 11 * $ratio750;
+            height: 11 * $ratio750;
+            margin-top: -5 * $ratio750;
+            background: #ffffff;
+            border-radius: 50%;
+            &.dot-left {
+                left: 32vw;
+            }
+            &.dot-right {
+                right: 32vw;
+            }
+        }
+    }
+    ul {
+        font-size: 26 * $ratio750;
+        padding: 0 40 * $ratio750;
+        letter-spacing: 1px;
+        li {
+            position: relative;
+            padding-left: 20 * $ratio750;
+            margin-bottom: 8 * $ratio750;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 11 * $ratio750;
+                height: 11 * $ratio750;
+                border-radius: 50%;
+                top: .5em;
+                background: #ffffff;
+            }
+        }
+    }
+}

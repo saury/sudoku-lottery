@@ -11,7 +11,10 @@ var cssLoader = ENV === 'production' ? ExtractTextPlugin.extract({
 
 module.exports = {
     entry: {
-        'index': ['./src/scripts/index.ts', './src/styles/index.scss'],
+        'intro': ['./src/scripts/intro.ts', './src/styles/intro.scss'],
+        'info': ['./src/scripts/info.ts', './src/styles/info.scss'],
+        'detail': ['./src/scripts/detail.ts', './src/styles/detail.scss'],
+        'index': ['./src/scripts/index.ts', './src/styles/index.scss']
     },
 
     module: {
@@ -62,13 +65,31 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             // name: ['index', 'game', 'record']
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
-            chunks: ['index', 'game', 'record'], //提取哪些模块共有的部分
-            minChunks: 3 // 提取至少3个模块共有的部分
+            chunks: ['index', 'intro', 'info', 'detail'], //提取哪些模块共有的部分
+            minChunks: 4 // 提取至少4个模块共有的部分
         }),
 
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             chunks: ['vendors', 'index']
-        })
+        }),
+
+        new HtmlWebpackPlugin({
+            filename: 'intro.html',
+            template: 'src/intro.html',
+            chunks: ['vendors', 'intro']
+        }),
+
+        new HtmlWebpackPlugin({
+            filename: 'info.html',
+            template: 'src/info.html',
+            chunks: ['vendors', 'info']
+        }),
+
+        new HtmlWebpackPlugin({
+            filename: 'detail.html',
+            template: 'src/detail.html',
+            chunks: ['vendors', 'detail']
+        }),
     ]
 };
